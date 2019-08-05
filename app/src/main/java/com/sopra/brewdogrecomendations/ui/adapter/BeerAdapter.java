@@ -11,10 +11,11 @@ import com.sopra.brewdogrecomendations.databinding.BeerBinding;
 import com.sopra.brewdogrecomendations.viewmodel.BeerModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder> {
 
-    private ArrayList<BeerModel> beers;
+    private List<BeerModel> beers;
     private LayoutInflater layoutInflater;
 
     public BeerAdapter(ArrayList<BeerModel> beers) {

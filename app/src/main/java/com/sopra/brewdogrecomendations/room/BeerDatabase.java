@@ -10,7 +10,7 @@ import androidx.room.TypeConverters;
 import com.sopra.brewdogrecomendations.viewmodel.BeerModel;
 
 @Database(entities = {BeerModel.class}, version = 1, exportSchema = false)
-@TypeConverters({Converters.class})
+//@TypeConverters({Converters.class})
 
 public abstract class BeerDatabase extends RoomDatabase {
 
@@ -22,9 +22,6 @@ public abstract class BeerDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), BeerDatabase.class, "beer-database")
-                            // allow queries on the main thread.
-                            // Don't do this on a real app! See PersistenceBasicSample for an example.
-                            .allowMainThreadQueries()///////////////////////////////////////////////////////////////////////
                             .build();
         }
         return INSTANCE;

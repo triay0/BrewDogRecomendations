@@ -2,5 +2,5 @@
     <string name="app_name">BrewDogRecomendations</string>
     <string name="abv">%.1f %%</string>
     <string name="findBeers">Find beers</string>
-    <string name="asc_abv">asc abv</string>
+    <string name="asc_abv">ABV acendent</string>
 </resources>
