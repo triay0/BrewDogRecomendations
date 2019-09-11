@@ -6,8 +6,8 @@ import androidx.room.Room;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.sopra.brewdogrecomendations.room.BeerDatabase;
-import com.sopra.brewdogrecomendations.viewmodel.BeerModel;
+import com.sopra.brewdogrecomendations.data.local.BeerDatabase;
+import com.sopra.brewdogrecomendations.data.local.entity.Beer;
 
 import org.junit.After;
 import org.junit.Before;
@@ -26,6 +26,7 @@ public class DaosTest {
 
     @Before
     public void init() {
+        //The database will be created in system memory,
         beerDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), BeerDatabase.class).build();
     }
 
@@ -34,9 +35,10 @@ public class DaosTest {
         beerDatabase.close();
     }
 
+    //Check if BeewModel is saved correctly
     @Test
-    public void testLoadPopularArticles() {
-        BeerModel entity = new BeerModel();
+    public void saveBeerModel() {
+        Beer entity = new Beer();
 
         entity.setId(1000);
         entity.setName("Estrella Damm");
@@ -44,7 +46,10 @@ public class DaosTest {
         entity.setFood("pescao");
 
         beerDatabase.beerDao().insert(entity);
-        LiveData<List<BeerModel>> articlesList = beerDatabase.beerDao().getBeers("pescao");
+        LiveData<List<Beer>> articlesList = beerDatabase.beerDao().getBeers("pescao");
         assertNotNull(articlesList);
     }
 }
+
+
+//Afegir m'es tests per l'objecte BeerData, retrofit

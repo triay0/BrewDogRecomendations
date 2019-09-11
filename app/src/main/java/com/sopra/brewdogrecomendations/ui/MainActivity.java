@@ -7,6 +7,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sopra.brewdogrecomendations.R;
+import com.sopra.brewdogrecomendations.data.local.entity.Beer;
 import com.sopra.brewdogrecomendations.ui.adapter.BeerAdapter;
-import com.sopra.brewdogrecomendations.viewmodel.BeerModel;
 import com.sopra.brewdogrecomendations.viewmodel.MainActivityViewModel;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView beerList;
     private BeerAdapter adapter;
-    private ArrayList<BeerModel> beersArray = new ArrayList<>();
+    private ArrayList<Beer> beersArray = new ArrayList<>();
     Button btn;
     EditText etFood;
     Switch sw;
@@ -55,20 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
         model = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
-        model.getBeers().observe(MainActivity.this, new Observer<List<BeerModel>>() {
+        model.getBeers().observe(MainActivity.this, new Observer<List<Beer>>() {
             @Override
-            public void onChanged(@Nullable List<BeerModel> beers) {
-                Collections.sort(beers, new Comparator<BeerModel>() {
+            public void onChanged(@Nullable List<Beer> beers) {
+
+                Toast.makeText(MainActivity.this, "size"+beers.size() , Toast.LENGTH_SHORT).show();
+                Collections.sort(beers, new Comparator<Beer>() {
                     @Override
-                    public int compare(BeerModel beerModel, BeerModel t1) {
-                        return Float.compare(beerModel.abv, t1.abv);
+                    public int compare(Beer beer, Beer t1) {
+                        return Float.compare(beer.abv, t1.abv);
                     }
                 });
+
+//                --livedata model vm rxjava dagger
 
                 beersArray.addAll(beers);
             }
         });
-
 
         setupList();
         btn.setOnClickListener(new View.OnClickListener() {
@@ -78,16 +82,15 @@ public class MainActivity extends AppCompatActivity {
                     getSnackbar(llMain, "Please check food field").show();
                     return;
                 }
-                model.getBeers(etFood.getText().toString());
+                model.getBeers();
 
             }
         });
 
-
+//Aixo al view model
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
                 Collections.reverse(beersArray);
                 adapter.notifyDataSetChanged();
             }

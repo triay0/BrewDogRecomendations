@@ -1,4 +1,4 @@
-package com.sopra.brewdogrecomendations.net;
+package com.sopra.brewdogrecomendations.data.remote;
 
 public class ApiConstants {
 

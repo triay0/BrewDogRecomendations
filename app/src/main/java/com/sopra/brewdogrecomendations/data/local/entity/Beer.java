@@ -1,4 +1,4 @@
-package com.sopra.brewdogrecomendations.viewmodel;
+package com.sopra.brewdogrecomendations.data.local.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -6,10 +6,8 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 @Entity(tableName = "beer")
-public class BeerModel {
+public class Beer {
     @SerializedName("id")
     @PrimaryKey
     public int id;

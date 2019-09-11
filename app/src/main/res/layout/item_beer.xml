@@ -6,7 +6,7 @@
 
         <variable
             name="beerview"
-            type="com.sopra.brewdogrecomendations.viewmodel.BeerModel"></variable>
+            type="com.sopra.brewdogrecomendations.data.local.entity.Beer"></variable>
     </data>
 
     <LinearLayout

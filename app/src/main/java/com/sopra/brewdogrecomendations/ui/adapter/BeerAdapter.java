@@ -7,18 +7,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.sopra.brewdogrecomendations.data.local.entity.Beer;
 import com.sopra.brewdogrecomendations.databinding.BeerBinding;
-import com.sopra.brewdogrecomendations.viewmodel.BeerModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder> {
 
-    private List<BeerModel> beers;
+    private List<Beer> beers;
     private LayoutInflater layoutInflater;
 
-    public BeerAdapter(ArrayList<BeerModel> beers) {
+    public BeerAdapter(ArrayList<Beer> beers) {
         this.beers = beers;
     }
 
@@ -36,7 +36,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull BeerViewHolder holder, int position) {
-        BeerModel currentBeer = beers.get(position);
+        Beer currentBeer = beers.get(position);
         holder.bind(currentBeer);
     }
 
@@ -53,9 +53,9 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
             this.binding = beerBinding;
         }
 
-        private void bind(BeerModel beerModel) {
-            this.binding.setBeerview(beerModel);
-            Glide.with(itemView).load(beerModel.image_url).into(this.binding.ivBeer);
+        private void bind(Beer beer) {
+            this.binding.setBeerview(beer);
+            Glide.with(itemView).load(beer.image_url).into(this.binding.ivBeer);
         }
 
     }

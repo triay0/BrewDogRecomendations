@@ -1,16 +1,15 @@
-package com.sopra.brewdogrecomendations.room;
+package com.sopra.brewdogrecomendations.data.local;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 
-import com.sopra.brewdogrecomendations.viewmodel.BeerModel;
+import com.sopra.brewdogrecomendations.data.local.dao.BeerDao;
+import com.sopra.brewdogrecomendations.data.local.entity.Beer;
 
-@Database(entities = {BeerModel.class}, version = 1, exportSchema = false)
-//@TypeConverters({Converters.class})
+@Database(entities = {Beer.class}, version = 1, exportSchema = false)
 
 public abstract class BeerDatabase extends RoomDatabase {
 
