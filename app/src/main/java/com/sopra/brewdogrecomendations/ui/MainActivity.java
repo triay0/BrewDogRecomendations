@@ -7,10 +7,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
-import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Beer> beersArray = new ArrayList<>();
     Button btn;
     EditText etFood;
-    Switch sw;
-    private LinearLayout llMain;
+    ToggleButton sw;
+    private ConstraintLayout llMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.btnInput);
         etFood = findViewById(R.id.etFood);
         sw = findViewById(R.id.switch1);
-        llMain = findViewById(R.id.llMain);
+        llMain = findViewById(R.id.constraintLayout);
 
         model = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Beer> beers) {
 
-                Toast.makeText(MainActivity.this, "size"+beers.size() , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "size"+beers.size() , Toast.LENGTH_SHORT).show();
                 Collections.sort(beers, new Comparator<Beer>() {
                     @Override
                     public int compare(Beer beer, Beer t1) {

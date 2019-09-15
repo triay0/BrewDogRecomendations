@@ -9,8 +9,8 @@ import androidx.room.RoomDatabase;
 import com.sopra.brewdogrecomendations.data.local.dao.BeerDao;
 import com.sopra.brewdogrecomendations.data.local.entity.Beer;
 
-@Database(entities = {Beer.class}, version = 1, exportSchema = false)
 
+@Database(entities = {Beer.class}, version = 1, exportSchema = false)
 public abstract class BeerDatabase extends RoomDatabase {
 
     private static BeerDatabase INSTANCE;
